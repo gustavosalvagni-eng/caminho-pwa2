@@ -1,0 +1,17 @@
+{
+  "name": "Caminho — Descobrir a Vontade de Deus",
+  "short_name": "Caminho",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f1e5",
+  "theme_color": "#192d3b",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
