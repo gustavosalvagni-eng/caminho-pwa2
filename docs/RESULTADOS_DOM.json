@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "groups": [
+    "Inicial 390px, imagem carregada, versão e 37 conteúdos",
+    "Referências, fonte externa, favoritos, progresso e controles TTS",
+    "Busca com acentos e estado vazio",
+    "Diário v1, criação, edição, exportação, rejeição de JSON inválido, merge e proteção XSS",
+    "Player MP3, catálogo de duas faixas e créditos",
+    "Rosário: grupos, contagem manual, conclusão e avanço de dezena",
+    "Sem overflow horizontal: 360, 390, 430 e 1280px",
+    "Dados anteriores corrompidos são preservados e bloqueiam escrita"
+  ],
+  "errors": [],
+  "scope": "Chromium DOM/layout; armazenamento simulado. Não equivale a teste real no Safari ou instalação PWA."
+}

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: Manifest, assets, scripts e referências do pacote estão completos
+ok 1 - Manifest, assets, scripts e referências do pacote estão completos
+  ---
+  duration_ms: 10.083485
+  type: 'test'
+  ...
+# Subtest: Instalação do SW precacheia apenas arquivos existentes no subdiretório
+ok 2 - Instalação do SW precacheia apenas arquivos existentes no subdiretório
+  ---
+  duration_ms: 28.14596
+  type: 'test'
+  ...
+# Subtest: Ativação preserva cache de áudio e caches de outros aplicativos
+ok 3 - Ativação preserva cache de áudio e caches de outros aplicativos
+  ---
+  duration_ms: 1.742256
+  type: 'test'
+  ...
+# Subtest: Navegação offline retorna o shell; recursos desconhecidos não recebem HTML
+ok 4 - Navegação offline retorna o shell; recursos desconhecidos não recebem HTML
+  ---
+  duration_ms: 4.237622
+  type: 'test'
+  ...
+# Subtest: O núcleo da V2 oferece validação e merge seguros
+ok 5 - O núcleo da V2 oferece validação e merge seguros
+  ---
+  duration_ms: 4.169408
+  type: 'test'
+  ...
+# Subtest: Conteúdo tem IDs únicos e referências resolvíveis
+ok 6 - Conteúdo tem IDs únicos e referências resolvíveis
+  ---
+  duration_ms: 4.98126
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 119.505837

@@ -1,10 +1,48 @@
-<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#192d3b"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.webmanifest"><title>Caminho · Discernimento</title><style>
-:root{--n:#192d3b;--g:#b88943;--p:#f7f1e5}*{box-sizing:border-box}body{margin:0;background:var(--p);color:var(--n);font:16px/1.65 system-ui,sans-serif}h1,h2,h3{font-family:Georgia,serif;line-height:1.15}h1{font-size:clamp(3rem,13vw,5rem);letter-spacing:-.055em}h2{font-size:2.4rem;letter-spacing:-.04em}h3{font-size:1.45rem}button{font:inherit;cursor:pointer}button:focus-visible,textarea:focus-visible{outline:3px solid var(--g)}.hero{min-height:82svh;background:linear-gradient(0deg,#192d3bef,#192d3b22),linear-gradient(130deg,#cda264,#516f76);color:white;display:flex;align-items:end;padding:2rem 1.5rem 5rem}.hero div{max-width:700px;margin:auto auto 0}.hero p{font-size:1.15rem;max-width:450px}.kicker{color:var(--g);font-weight:800;font-size:.73rem;letter-spacing:.19em;text-transform:uppercase}.hero .kicker{color:#f4ce8c}.btn{background:var(--g);color:#182d3c;border:0;border-radius:50px;padding:.8rem 1.25rem;font-weight:750}.outline{border:1px solid var(--g);background:transparent;border-radius:40px;color:var(--n);padding:.6rem 1rem}.page{display:none}.page.active{display:block}.wrap{max-width:850px;margin:auto;padding:2.5rem 1.3rem 7rem}.card{background:#fffdf7;border:1px solid #e7dbc4;border-radius:18px;padding:1.4rem;margin:1rem 0;box-shadow:0 8px 20px #493f2510}.row{display:flex;align-items:center;justify-content:space-between;gap:.6rem}.small{font-size:.84rem;color:#746f63}.line{border-left:2px solid var(--g);padding-left:1.4rem}.line article{margin:0 0 1.7rem}.tabs{display:flex;overflow-x:auto;gap:.5rem;padding:.5rem 0}.tabs button{white-space:nowrap;background:#fff;border:1px solid #e1d3bb;border-radius:40px;padding:.5rem .9rem}.tabs button.selected{background:var(--n);color:white}.bottom{position:fixed;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(5,1fr);background:#fffdf9f2;border-top:1px solid #ddd1b9;padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}.bottom button{border:0;background:transparent;color:#56606a;font-size:.68rem;display:flex;align-items:center;flex-direction:column;gap:.2rem}.bottom button.active{color:#9a6b28;font-weight:800}.bottom span{font-size:1.3rem}textarea{width:100%;min-height:90px;border:1px solid #d1c3a9;border-radius:12px;padding:1rem;font:inherit}label{display:block;font-weight:700;margin:1rem 0 .3rem}.entry{padding:1rem 0;border-bottom:1px solid #ddd1b9;white-space:pre-wrap}blockquote{font:italic 1.45rem/1.5 Georgia,serif;border-left:2px solid var(--g);padding-left:1rem}footer{text-align:center;padding:2rem 1rem 7rem;color:#777;font-size:.8rem}@media(min-width:800px){.bottom{max-width:600px;left:50%;transform:translateX(-50%);border-radius:20px 20px 0 0}}
-</style><main id="inicio" class="page active"><div class="hero"><div><div class="kicker">✝ CAMINHO · ORAÇÃO E DISCERNIMENTO</div><h1>Descobrir a vontade de Deus.</h1><p>Um espaço de silêncio, estudo e oração para caminhar com Cristo.</p><button class="btn" onclick="go('trilha')">Começar a jornada →</button></div></div><div class="wrap"><div class="kicker">Um caminho interior</div><h2>Escutar. Discernir. Responder.</h2><p>Dez passos para amadurecer decisões à luz da Palavra, dos sacramentos e da tradição católica.</p><blockquote>“Faça-se em mim segundo a tua palavra.”<div class="small">Lucas 1,38</div></blockquote><button class="outline" onclick="go('biblioteca')">Conhecer os ensinamentos →</button></div></main>
-<section id="trilha" class="page wrap"><div class="kicker">Dez passos</div><h2>Discernimento</h2><div id="lesson" class="card"></div><div class="row"><button class="outline" onclick="move(-1)">← Anterior</button><span id="count"></span><button class="outline" onclick="move(1)">Próximo →</button></div><p class="small">Reflexões autorais, com referências para leitura na Bíblia e no Catecismo.</p></section>
-<section id="jesus" class="page wrap"><div class="kicker">História da salvação</div><h2>A vida de Jesus</h2><div class="line" id="timeline"></div></section>
-<section id="biblioteca" class="page wrap"><div class="kicker">Formação</div><h2>Ensinamentos</h2><div id="topics" class="tabs"></div><div id="topic" class="card"></div><h2>Santos e vocação</h2><div id="saints"></div></section>
-<section id="oracoes" class="page wrap"><div class="kicker">Vida interior</div><h2>Orações e Terço</h2><div id="prayerTabs" class="tabs"></div><div id="prayer" class="card"></div><h3>Mistérios do Rosário</h3><p class="small">Gozosos: segunda e sábado. Dolorosos: terça e sexta. Gloriosos: quarta e domingo. Luminosos: quinta.</p><div id="mysteryTabs" class="tabs"></div><div id="mysteries" class="card"></div></section>
-<section id="diario" class="page wrap"><div class="kicker">Oração pessoal</div><h2>Diário espiritual</h2><p class="small">Registros somente neste navegador, sem login nem sincronização. Não utilize em dispositivo compartilhado. Exporte regularmente.</p><form id="form"><label for="reading">Leitura do dia</label><textarea id="reading" required maxlength="2000"></textarea><label for="motion">Moção sentida</label><textarea id="motion" required maxlength="2000"></textarea><label for="purpose">Propósito concreto</label><textarea id="purpose" required maxlength="2000"></textarea><p><button class="btn">Guardar registro</button></p></form><div class="row"><h3>Registros</h3><button class="outline" onclick="exportDiary()">Exportar</button></div><div id="entries"></div></section>
-<footer>Caminho · Conteúdo de apoio espiritual, não substitui acompanhamento pastoral.</footer><nav class="bottom" aria-label="Navegação"><button data-page="inicio" onclick="go('inicio')" class="active"><span>⌂</span>Início</button><button data-page="trilha" onclick="go('trilha')"><span>✧</span>Trilha</button><button data-page="jesus" onclick="go('jesus')"><span>✝</span>Jesus</button><button data-page="oracoes" onclick="go('oracoes')"><span>☼</span>Orações</button><button data-page="diario" onclick="go('diario')"><span>▤</span>Diário</button></nav>
-<script src="app.js" defer></script></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#102630"><meta name="application-version" content="2.0.0">
+<meta name="description" content="Caminho: oração, discernimento e formação católica. Medite, escute e registre sua vida espiritual.">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Caminho">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Caminho · Oração e discernimento</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="stylesheet" href="styles.css?v=2.0.0">
+<script src="core.js?v=2.0.0" defer></script><script src="content.js?v=2.0.0" defer></script><script src="app.js?v=2.0.0" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-defs" aria-hidden="true"><defs>
+<symbol id="i-cross" viewBox="0 0 24 24"><path d="M12 2v20M5 8h14"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3z"/></symbol>
+<symbol id="i-path" viewBox="0 0 24 24"><path d="M4 21c0-10 16-8 16-14a4 4 0 0 0-8 0M4 21h7M16 3v8"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16M3 3c4 0 6 0 9 2 3-2 5-2 9-2v16c-4 0-6 0-9 2-3-2-5-2-9-2z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H4m6-6-6 6 6 6"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21 3.6 13A5.7 5.7 0 0 1 12 5a5.7 5.7 0 0 1 8.4 8z"/></symbol>
+<symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 14V11a8 8 0 0 1 16 0v3M4 12h4v9H4zM16 12h4v9h-4z"/></symbol>
+<symbol id="i-voice" viewBox="0 0 24 24"><path d="m3 9 4 0 5-4v14l-5-4H3zM16 8a7 7 0 0 1 0 8m3-12a12 12 0 0 1 0 16"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 16 12-12 4 4L8 20H4zM13 7l4 4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M5 19 19 5"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4 20C4 6 12 3 21 3c0 9-3 17-17 17zm0 0L16 8"/></symbol>
+</defs></svg>
+<header class="app-header"><button class="brand" data-route="inicio" aria-label="Caminho: início"><svg class="icon"><use href="#i-cross"/></svg><span>Caminho</span></button><div class="header-actions"><span class="version">2.0</span><button class="icon-button" data-route="biblioteca" aria-label="Buscar na biblioteca"><svg class="icon"><use href="#i-search"/></svg></button><button class="icon-button" data-route="mais" aria-label="Abrir menu"><svg class="icon"><use href="#i-more"/></svg></button></div></header>
+<main id="app" tabindex="-1"><div class="loading">Caminho<br><small>Preparando seu espaço de oração…</small></div></main>
+<noscript><p>Ative o JavaScript para navegar e usar o diário. O aplicativo não exige uma API paga.</p></noscript>
+<div id="voice-dock" class="voice-dock" hidden><svg class="icon"><use href="#i-voice"/></svg><span id="voice-status" role="status">Leitura em voz alta</span><button id="pause-speech" type="button">Pausar</button><button id="stop-speech" class="icon-button" type="button" aria-label="Parar leitura"><svg class="icon"><use href="#i-close"/></svg></button></div>
+<div id="toast" class="toast" role="status" hidden></div>
+<dialog id="reference-dialog" aria-labelledby="reference-title"><div class="dialog-top"><span class="eyebrow">Ler e aprofundar</span><button id="reference-close" class="icon-button" aria-label="Fechar referência"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="reference-body"></div></dialog>
+<nav class="bottom-nav" aria-label="Navegação principal">
+<button data-route="inicio"><svg class="icon"><use href="#i-home"/></svg><span>Início</span></button>
+<button data-route="jornada"><svg class="icon"><use href="#i-path"/></svg><span>Jornada</span></button>
+<button data-route="biblioteca"><svg class="icon"><use href="#i-book"/></svg><span>Biblioteca</span></button>
+<button data-route="oracoes"><svg class="icon"><use href="#i-sun"/></svg><span>Orar</span></button>
+<button data-route="mais"><svg class="icon"><use href="#i-more"/></svg><span>Mais</span></button>
+</nav>
+</body></html>
