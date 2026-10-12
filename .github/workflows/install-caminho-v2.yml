@@ -1,0 +1,72 @@
+name: Instalar Caminho 2.0
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/install-caminho-v2.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: caminho-v2-install
+  cancel-in-progress: false
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+      - name: Baixar e conferir o pacote revisado
+        id: unpack
+        env:
+          PACKAGE_URL: https://gcdn.picsart.com/editing-temp/81eaa6da-a073-486f-bdbe-94296ea3b465.zip
+          PACKAGE_SHA256: 4290d01d4933b351a9ce043804cdb53b4ed496a1e58ebee0abe0b43c4bc5610b
+        shell: python
+        run: |
+          import hashlib, io, os, pathlib, stat, urllib.request, zipfile
+          root = pathlib.Path.cwd()
+          current = (root / 'index.html').read_text(encoding='utf-8') if (root / 'index.html').exists() else ''
+          if 'name="application-version" content="2.0.0"' in current:
+              print('A versão 2.0 já está instalada; nada será sobrescrito.')
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+                  out.write('changed=false\n')
+              raise SystemExit(0)
+          request = urllib.request.Request(os.environ['PACKAGE_URL'], headers={'User-Agent': 'Caminho-Release-Installer/2.0'})
+          with urllib.request.urlopen(request, timeout=45) as response:
+              data = response.read(2_000_001)
+          if len(data) > 2_000_000:
+              raise RuntimeError('Pacote excedeu o limite esperado.')
+          if hashlib.sha256(data).hexdigest() != os.environ['PACKAGE_SHA256']:
+              raise RuntimeError('SHA-256 divergente: nenhum arquivo será aplicado.')
+          allowed = {'index.html','styles.css','core.js','content.js','app.js','sw.js','manifest.webmanifest','icon.svg','.nojekyll','README.md','assets/icon-192.png','assets/icon-512.png','assets/jesus.webp','assets/maria.webp','tests/unit.test.cjs','tests/pwa.test.cjs','tests/test_render.py','tests/test_mobile.py','docs/RESULTADOS_DOM.json','docs/RESULTADOS_NODE.txt','docs/VALIDACAO.md','docs/FONTES_E_LICENCAS.md'}
+          archive = zipfile.ZipFile(io.BytesIO(data))
+          if set(archive.namelist()) != allowed:
+              raise RuntimeError('A lista de arquivos do pacote não corresponde à revisão.')
+          if sum(item.file_size for item in archive.infolist()) > 3_000_000:
+              raise RuntimeError('Conteúdo descompactado excedeu o limite.')
+          for item in archive.infolist():
+              if item.is_dir() or stat.S_ISLNK(item.external_attr >> 16):
+                  raise RuntimeError('Tipo de arquivo não permitido.')
+              destination = root / item.filename
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              destination.write_bytes(archive.read(item))
+          print('Pacote conferido: 22 arquivos, incluindo imagens e testes.')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+              out.write('changed=true\n')
+      - name: Validar código e integridade
+        run: node --test tests/*.test.cjs
+      - name: Registrar a nova versão na branch main
+        if: steps.unpack.outputs.changed == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html styles.css core.js content.js app.js sw.js manifest.webmanifest icon.svg .nojekyll README.md assets tests docs
+          git diff --cached --check
+          git commit -m 'Publicar código Caminho 2.0: novo visual, 37 conteúdos, áudio, TTS e diário preservado'
+          git push origin HEAD:main
+      - name: Orientação de hospedagem
+        run: |
+          echo 'Os arquivos estão em main. A ativação do Pages permanece em Settings > Pages > main > /(root).'
+          echo 'Não apague os dados do Safari antes de exportar o diário.'
